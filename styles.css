@@ -3,27 +3,24 @@
    ============================================ */
 
 :root {
-    /* Primary Colors - More Professional Palette */
-    --primary-color: #1e293b;
-    --primary-dark: #0f172a;
-    --primary-light: #334155;
-    /* Accent Colors - Sophisticated */
-    --accent-color: #7c3aed;
+    /* Primary Colors */
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #3b82f6;
+    /* Accent Colors */
+    --accent-color: #8b5cf6;
     --accent-light: #a78bfa;
-    --accent-dark: #5b21b6;
-    /* Neutral Colors - Enhanced */
+    /* Neutral Colors */
     --background: #ffffff;
     --background-secondary: #f8fafc;
-    --background-gradient: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
     --text-primary: #0f172a;
     --text-secondary: #475569;
-    --text-light: #64748b;
-    /* Border & Shadow - More Refined */
+    --text-light: #94a3b8;
+    /* Border & Shadow */
     --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'Playfair Display', serif;
@@ -33,19 +30,14 @@
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
-    /* Border Radius - More Modern */
-    --radius-sm: 0.375rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1rem;
-    --radius-xl: 1.5rem;
-    /* Transitions - Smoother */
-    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* Border Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 
@@ -67,10 +59,9 @@ html {
 body {
     font-family: var(--font-primary);
     color: var(--text-primary);
-    background: #ffffff;
+    background-color: var(--background);
     line-height: 1.6;
     overflow-x: hidden;
-    min-height: 100vh;
 }
 
 img {
@@ -143,8 +134,6 @@ section {
     z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-sm);
     transition: var(--transition-base);
 }
@@ -300,7 +289,7 @@ section {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
 }
 
 .hero-bg {
@@ -309,10 +298,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
     z-index: 0;
     animation: bgFloat 20s ease-in-out infinite;
 }
@@ -337,14 +323,16 @@ section {
 
 .hero-title {
     margin-bottom: var(--spacing-sm);
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
     margin-bottom: var(--spacing-md);
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-secondary);
 }
 
 @keyframes fadeInUp {
@@ -364,7 +352,7 @@ section {
    ============================================ */
 
 .about {
-    background: #f8fafc;
+    background: var(--background-secondary);
 }
 
 .about-grid {
@@ -431,13 +419,11 @@ section {
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: var(--background);
     padding: var(--spacing-md);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -445,24 +431,6 @@ section {
     justify-content: center;
     transition: all var(--transition-base);
     height: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
-    opacity: 0;
-    transition: var(--transition-base);
-}
-
-.service-card:hover::before {
-    opacity: 1;
 }
 
 .service-card:hover {
@@ -512,15 +480,11 @@ section {
 /* Card styling */
 
 .project-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: white;
+    border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
-    position: relative;
 }
 
 .project-card:hover {
@@ -628,7 +592,7 @@ section {
    ============================================ */
 
 .testimonials {
-    background: #f8fafc;
+    background: var(--background-secondary);
 }
 
 .testimonial-carousel {
@@ -645,15 +609,11 @@ section {
 
 .testimonial-card {
     min-width: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: white;
     padding: var(--spacing-lg);
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--shadow-xl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
     text-align: center;
-    position: relative;
 }
 
 .testimonial-text {
@@ -760,32 +720,11 @@ section {
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-md, 1rem);
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--shadow-lg);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--accent-color), var(--accent-light));
-    opacity: 0;
-    transition: var(--transition-base);
-}
-
-.contact-item:hover::before {
-    opacity: 1;
+    padding: 1rem;
+    background: var(--background-secondary, #f9fafb);
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid var(--border-color, #e5e7eb);
+    transition: all 0.3s ease;
 }
 
 .contact-item:hover {
@@ -873,33 +812,9 @@ section {
    ============================================ */
 
 .footer {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    background: var(--text-primary);
     color: white;
     padding: var(--spacing-lg) 0 var(--spacing-md);
-    position: relative;
-    overflow: hidden;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
-    z-index: 0;
-}
-
-.footer-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
@@ -949,81 +864,18 @@ section {
 
 
 /* ============================================
-   ANIMATIONS & MICRO-INTERACTIONS
+   ANIMATIONS
    ============================================ */
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
 }
 
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.slide-in-left {
-    animation: slideInLeft 0.8s ease-out;
-}
-
-.slide-in-right {
-    animation: slideInRight 0.8s ease-out;
-}
-
-.scale-in {
-    animation: scaleIn 0.6s ease-out;
-}
-
-/* Add subtle hover effects to buttons */
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Enhanced focus states for accessibility */
-.form-input:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-    transform: translateY(-1px);
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
