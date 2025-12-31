@@ -83,7 +83,7 @@ function goToSlide(index) {
 
 function updateCarousel() {
     const offset = -currentIndex * 100;
-    testimonialTrack.style.transform = translateX(${offset}%);
+    testimonialTrack.style.transform = `translateX(${offset}%)`;
 
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentIndex);
@@ -292,7 +292,7 @@ function createCursorTrail() {
         circles.forEach((circle, index) => {
             circle.style.left = x - 12 + 'px';
             circle.style.top = y - 12 + 'px';
-            circle.style.transform = scale(${(circles.length - index) / circles.length});
+            circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
 
             circle.x = x;
             circle.y = y;
@@ -321,7 +321,7 @@ if (heroSection && heroBg) {
 
         if (scrolled < heroHeight) {
             const parallaxValue = scrolled * 0.5;
-            heroBg.style.transform = translateY(${parallaxValue}px);
+            heroBg.style.transform = `translateY(${parallaxValue}px)`;
         }
     });
 }
@@ -348,7 +348,7 @@ function highlightActiveSection() {
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === #${current}) {
+            if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
             }
         });
@@ -356,6 +356,54 @@ function highlightActiveSection() {
 }
 
 highlightActiveSection();
+
+// ============================================
+// INTERSECTION OBSERVER FOR ANIMATIONS
+// ============================================
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, observerOptions);
+
+// Observe sections for animations
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});
+
+// Add specific animation classes based on section
+document.addEventListener('DOMContentLoaded', () => {
+    // Hero content animation
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        heroContent.classList.add('fade-in-up');
+    }
+
+    // About section animations
+    const aboutText = document.querySelector('.about-text');
+    const aboutImage = document.querySelector('.about-image');
+    if (aboutText) aboutText.classList.add('slide-in-left');
+    if (aboutImage) aboutImage.classList.add('slide-in-right');
+
+    // Service cards animations
+    document.querySelectorAll('.service-card').forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('scale-in');
+    });
+
+    // Project cards animations
+    document.querySelectorAll('.project-card').forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.15}s`;
+        card.classList.add('fade-in-up');
+    });
+});
 
 // ============================================
 // CONSOLE MESSAGE (Easter Egg)
@@ -374,6 +422,6 @@ window.addEventListener('load', () => {
     if (window.performance) {
         const perfData = window.performance.timing;
         const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-        console.log(Page loaded in ${pageLoadTime}ms);
+        console.log(`Page loaded in ${pageLoadTime}ms`);
     }
 });
